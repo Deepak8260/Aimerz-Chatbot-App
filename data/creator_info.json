@@ -1,88 +1,89 @@
 {
-  "name": "Vishwa Mohan",
-  "title": "Building AIMERZ.ai for 300 million students | AIMERZ.ai - India's First Job-Focused Upskilling Platform | Under Top 40 CIOs '23 | Ex - PW, LinkedIn, Walmart, PayPal | ❤️ Tech n Teaching | IIT Grad",
-  "company": "AIMERZ",
-  "education": "Indian Institute of Technology (Banaras Hindu University), Varanasi",
-  "location": "Bengaluru, Karnataka, India",
-  "followers": 43512,
-  "connections": "500+",
-  "about": "I am Vishwa Mohan, founder at AIMERZ.ai. I'm bringing jobs and upskilling on the same platform for the next 300 million students. #JobTumharaBhaiDilayeiga. Growing up in a value-driven middle-class family, I have always believed in my father's motto of 'Simple Living, Higher Thinking.' I bring over 14+ years of experience working with some of the biggest names in the industry, including PW, LinkedIn, Amazon, Walmart, PayPal, and Oracle. I have also taught 1M+ students across all the edTechs in India and globally.",
-  "experience": [
-    {
-      "position": "Founder and CEO",
-      "company": "AIMERZ",
-      "duration": "Aug 2024 - Present",
-      "location": "India",
-      "description": "Building AIMERZ.ai, India's First Job-Focused Upskilling Platform, for 300 million students."
-    },
-    {
-      "position": "President",
-      "company": "PW Institute of Innovation",
-      "duration": "Aug 2023 - Jun 2024",
-      "location": "Bengaluru, Karnataka, India",
-      "description": "Led the development and implementation of cutting-edge curricula in technology and management, overseeing academic and operational aspects to enhance student success."
-    },
-    {
-      "position": "Chief Information Officer",
-      "company": "PW (PhysicsWallah)",
-      "duration": "Apr 2023 - Jun 2024",
-      "location": "India",
-      "description": "Elevated the engineering prowess of PW, creating a world-class tech-first platform to enable professional growth for millions of learners worldwide."
+    "name": "Vishwa Mohan",
+    "title": "Building AIMERZ.ai for 300 million students | AIMERZ.ai - India's First Job-Focused Upskilling Platform | Under Top 40 CIOs '23 | Ex - PW, LinkedIn, Walmart, PayPal | ❤️ Tech n Teaching | IIT Grad",
+    "company": "AIMERZ",
+    "education": "Indian Institute of Technology (Banaras Hindu University), Varanasi",
+    "location": "Bengaluru, Karnataka, India",
+    "followers": 43512,
+    "connections": "500+",
+    "about": "I am Vishwa Mohan, founder at AIMERZ.ai. I'm bringing jobs and upskilling on the same platform for the next 300 million students. #JobTumharaBhaiDilayeiga. Growing up in a value-driven middle-class family, I have always believed in my father's motto of 'Simple Living, Higher Thinking.' I bring over 14+ years of experience working with some of the biggest names in the industry, including PW, LinkedIn, Amazon, Walmart, PayPal, and Oracle. I have also taught 1M+ students across all the edTechs in India and globally.",
+    "experience": [
+      {
+        "position": "Founder and CEO",
+        "company": "AIMERZ",
+        "duration": "Aug 2024 - Present",
+        "location": "India",
+        "description": "Building AIMERZ.ai, India's First Job-Focused Upskilling Platform, for 300 million students."
+      },
+      {
+        "position": "President",
+        "company": "PW Institute of Innovation",
+        "duration": "Aug 2023 - Jun 2024",
+        "location": "Bengaluru, Karnataka, India",
+        "description": "Led the development and implementation of cutting-edge curricula in technology and management, overseeing academic and operational aspects to enhance student success."
+      },
+      {
+        "position": "Chief Information Officer",
+        "company": "PW (PhysicsWallah)",
+        "duration": "Apr 2023 - Jun 2024",
+        "location": "India",
+        "description": "Elevated the engineering prowess of PW, creating a world-class tech-first platform to enable professional growth for millions of learners worldwide."
+      }
+    ],
+    "skills": [
+      {
+        "category": "Engineering",
+        "endorsements": 4,
+        "endorsed_by": "PW (PhysicsWallah) colleagues"
+      },
+      {
+        "category": "Leadership",
+        "endorsements": 4,
+        "endorsed_by": "PW (PhysicsWallah) colleagues"
+      },
+      {
+        "category": "Educational Leadership",
+        "endorsements": 3,
+        "endorsed_by": "PW (PhysicsWallah) colleagues"
+      },
+      {
+        "category": "Organizational Consulting",
+        "endorsements": 5
+      },
+      {
+        "category": "Technical Skills",
+        "skills": [
+          { "name": "Java", "endorsements": 48 },
+          { "name": "JavaScript", "endorsements": 23 },
+          { "name": "Data Structures", "endorsements": 28 },
+          { "name": "Algorithms", "endorsements": 15 },
+          { "name": "Node.js", "endorsements": 11 },
+          { "name": "jQuery", "endorsements": 9 },
+          { "name": "HTML", "endorsements": 15 },
+          { "name": "Selenium", "endorsements": 8 },
+          { "name": "RESTful WebServices", "endorsements": 10 },
+          { "name": "Software Design Patterns", "endorsements": 12 },
+          { "name": "Product Development", "endorsements": 7 },
+          { "name": "Product Management", "endorsements": 6 },
+          { "name": "MongoDB", "endorsements": 8 },
+          { "name": "Oracle", "endorsements": 7 },
+          { "name": "CSS", "endorsements": 10 },
+          { "name": "Spring Framework", "endorsements": 7 },
+          { "name": "C", "endorsements": 19 },
+          { "name": "C++", "endorsements": 9 },
+          { "name": "SQL", "endorsements": 26 },
+          { "name": "Linux", "endorsements": 7 },
+          { "name": "Programming", "endorsements": 9 },
+          { "name": "Java Enterprise Edition", "endorsements": 4 },
+          { "name": "Scala", "endorsements": 3 },
+          { "name": "Apache Kafka", "endorsements": 5 },
+          { "name": "Cassandra", "endorsements": 4 },
+          { "name": "MongoDB", "endorsements": 4 }
+        ]
+      }
+    ],
+    "social_media": {
+      "instagram_followers": 43512
     }
-  ],
-  "skills": [
-    {
-      "category": "Engineering",
-      "endorsements": 4,
-      "endorsed_by": "PW (PhysicsWallah) colleagues"
-    },
-    {
-      "category": "Leadership",
-      "endorsements": 4,
-      "endorsed_by": "PW (PhysicsWallah) colleagues"
-    },
-    {
-      "category": "Educational Leadership",
-      "endorsements": 3,
-      "endorsed_by": "PW (PhysicsWallah) colleagues"
-    },
-    {
-      "category": "Organizational Consulting",
-      "endorsements": 5
-    },
-    {
-      "category": "Technical Skills",
-      "skills": [
-        { "name": "Java", "endorsements": 48 },
-        { "name": "JavaScript", "endorsements": 23 },
-        { "name": "Data Structures", "endorsements": 28 },
-        { "name": "Algorithms", "endorsements": 15 },
-        { "name": "Node.js", "endorsements": 11 },
-        { "name": "jQuery", "endorsements": 9 },
-        { "name": "HTML", "endorsements": 15 },
-        { "name": "Selenium", "endorsements": 8 },
-        { "name": "RESTful WebServices", "endorsements": 10 },
-        { "name": "Software Design Patterns", "endorsements": 12 },
-        { "name": "Product Development", "endorsements": 7 },
-        { "name": "Product Management", "endorsements": 6 },
-        { "name": "MongoDB", "endorsements": 8 },
-        { "name": "Oracle", "endorsements": 7 },
-        { "name": "CSS", "endorsements": 10 },
-        { "name": "Spring Framework", "endorsements": 7 },
-        { "name": "C", "endorsements": 19 },
-        { "name": "C++", "endorsements": 9 },
-        { "name": "SQL", "endorsements": 26 },
-        { "name": "Linux", "endorsements": 7 },
-        { "name": "Programming", "endorsements": 9 },
-        { "name": "Java Enterprise Edition", "endorsements": 4 },
-        { "name": "Scala", "endorsements": 3 },
-        { "name": "Apache Kafka", "endorsements": 5 },
-        { "name": "Cassandra", "endorsements": 4 },
-        { "name": "MongoDB", "endorsements": 4 }
-      ]
-    }
-  ],
-  "social_media": {
-    "instagram_followers": 43512
   }
-}
+  
