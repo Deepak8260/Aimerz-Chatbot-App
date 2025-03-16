@@ -1,0 +1,186 @@
+{
+    "about": "AIMERZ is India's first job-focused learning platform, founded by Vishwa Mohan, Former CIO of PhysicsWallah. It provides career-aligned courses in Full Stack Development, Data Science, and DSA, along with hands-on projects and industry internships.",
+    
+    "courses": {
+        "full_stack_ai": {
+            "name": "Full Stack Development with AI",
+            "variants": {
+                "skillup_land_a_job": {
+                    "duration": "12 Months",
+                    "price": "₹16,499 (Original ₹19,999)",
+                    "start_date": "March 10, 2025",
+                    "features": [
+                        "Learn MERN Stack, Backend Development, Databases, and AI Integration",
+                        "Available in English and Hindi",
+                        "Live and Recorded Sessions",
+                        "100+ Hands-On Projects",
+                        "500+ Hours of Learning",
+                        "60+ Hours of Aptitude & Soft Skills",
+                        "2 Industry-Led Internships with Certificate",
+                        "Daily Live Hands-on Learning",
+                        "Unlimited AI Mock Interviews",
+                        "Profile Building & Soft Skill Development",
+                        "50+ Job Opportunities from 500+ Hiring Partners",
+                        "ATS-Friendly Resume Builder"
+                    ]
+                },
+                "skillup": {
+                    "duration": "6 Months",
+                    "price": "₹11,499 (Original ₹13,999)",
+                    "start_date": "March 10, 2025",
+                    "features": [
+                        "Learn MERN Stack, Backend Development, Databases, and AI Integration",
+                        "Available in English and Hindi",
+                        "Live and Recorded Sessions",
+                        "100+ Hands-On Projects",
+                        "500+ Hours of Learning",
+                        "60+ Hours of Aptitude & Soft Skills",
+                        "2 Industry-Led Internships with Certificate",
+                        "Daily Live Hands-on Learning"
+                    ]
+                }
+            },
+            "projects": {
+                "beginner": [
+                    "Cryptocurrency App",
+                    "Language Translator App",
+                    "Drawing Board App"
+                ],
+                "advanced": [
+                    "Google Gemini AI",
+                    "Topmate.io Clone",
+                    "Real-Time Chat Application",
+                    "Chrome Extension"
+                ]
+            },
+            "career_outcomes": [
+                "Frontend Developer",
+                "MERN Stack Developer",
+                "Backend Developer",
+                "JavaScript Developer",
+                "Full Stack Developer",
+                "AI Developer",
+                "Cloud Engineer",
+                "Web Developer",
+                "DevOps Engineer"
+            ]
+        },
+        "data_science_ai": {
+            "name": "Data Science with Generative AI",
+            "variants": {
+                "skillup_land_a_job": {
+                    "duration": "12 Months",
+                    "price": "₹18,999 (Original ₹21,999)",
+                    "start_date": "March 10, 2025",
+                    "features": [
+                        "Learn Data Toolkit, Machine Learning, NLP with Gen AI skills",
+                        "Available in English and Hindi",
+                        "Live and Recorded Sessions",
+                        "100+ Hands-On Projects",
+                        "500+ Hours of Learning",
+                        "60+ Hours of Aptitude Training",
+                        "2 Industry-Led Internships with Certificate",
+                        "Daily Live Hands-on Learning",
+                        "Unlimited AI Mock Interviews",
+                        "Profile Building & Soft Skill Development",
+                        "50+ Job Opportunities from 500+ Hiring Partners",
+                        "ATS-Friendly Resume Builder"
+                    ]
+                },
+                "skillup": {
+                    "duration": "8 Months",
+                    "price": "₹14,999 (Original ₹17,999)",
+                    "start_date": "March 10, 2025",
+                    "features": [
+                        "Learn Data Toolkit, Machine Learning, NLP with Gen AI skills",
+                        "Available in English and Hindi",
+                        "Live and Recorded Sessions",
+                        "100+ Hands-On Projects",
+                        "500+ Hours of Learning",
+                        "60+ Hours of Aptitude Training",
+                        "2 Industry-Led Internships with Certificate",
+                        "Daily Live Hands-on Learning"
+                    ]
+                }
+            },
+            "career_outcomes": [
+                "Data Scientist",
+                "Generative AI Specialist",
+                "Machine Learning Engineer",
+                "AI Engineer",
+                "NLP Engineer",
+                "Computer Vision Engineer",
+                "Data Analyst",
+                "AI Product Manager"
+            ]
+        },
+        "java_full_stack": {
+            "name": "Java Full Stack Development",
+            "duration": "6 Months",
+            "features": [
+                "Master Java, Spring Boot, Front-end Development",
+                "Available in English and Hindi",
+                "Live and Recorded Sessions",
+                "100+ Projects"
+            ]
+        },
+        "dsa": {
+            "name": "Data Structures and Algorithms",
+            "duration": "2.5 Months",
+            "features": [
+                "Master DSA with JavaScript, Python, and Java",
+                "Live Problem-Solving Sessions",
+                "100% Live Classes",
+                "100+ Hours of Learning"
+            ]
+        }
+    },
+
+    "masterclasses": {
+        "full_stack_ds": {
+            "title": "Complete Roadmap to Full Stack Development & Data Science",
+            "date": "March 6, 2025",
+            "time": "7:00 PM - 9:00 PM",
+            "price": "INR 0 (Limited Time Offer, was INR 999)"
+        },
+        "python": {
+            "title": "Zero to Python Hero",
+            "date": "March 9, 2025",
+            "time": "11:00 AM - 1:00 PM"
+        }
+    },
+
+    "internships": "AIMERZ offers industry-led virtual internships that allow learners to solve real-world problems and boost their career prospects.",
+
+    "success_stories": [
+        "Sneha Kudarihalmath - From Fresher to Placed",
+        "Janani Jayashree - From Fresher to Placed",
+        "Utkarsh Singh - From Fresher to Placed",
+        "Shivalingu K G - From Fresher to Placed"
+    ],
+
+    "why_aimerz": [
+        "Get Skills Employers Want - Upskilling in Data Science & Full Stack Development",
+        "Learn in English or Hindi - Study in your preferred language",
+        "Profile Building - Create an ATS-friendly profile & apply for 50+ jobs",
+        "Pocket-Friendly Fees - High-quality learning at affordable prices",
+        "Complete Interview Prep - 60+ hours of technical & non-technical interview training",
+        "Hands-On Learning - 100+ real-world projects & daily practice"
+    ],
+
+    "stats": {
+        "reviews": "4.5/5 ⭐ (2000+ Reviews)",
+        "students": "5000+ Enrolled Students",
+        "placements": "350+ Placed Students",
+        "hiring_partners": "250+ Hiring Partners"
+    },
+
+    "offers": {
+        "holi_offer": {
+            "discount": "20% Off on all courses",
+            "code": "HOLI2025"
+        }
+    },
+
+    "contact": "Chat with us to learn more!"
+}
