@@ -1,9 +1,22 @@
 {
     "about": "AIMERZ is India's first job-focused learning platform, founded by Vishwa Mohan, Former CIO of PhysicsWallah. It provides career-aligned courses in Full Stack Development, Data Science, and DSA, along with hands-on projects and industry internships.",
-    
+
     "courses": {
         "full_stack_ai": {
             "name": "Full Stack Development with AI",
+            "instructors": [
+                {
+                    "name": "Mithun S",
+                    "linkedin": "https://www.linkedin.com/in/yesmithun/"
+                },
+                {
+                    "name": "Vishwa Mohan"
+                }
+            ],
+            "ta_expert": {
+                "name": "Sandeepak Singh",
+                "linkedin": "https://www.linkedin.com/in/sandeepaksingh/"
+            },
             "variants": {
                 "skillup_land_a_job": {
                     "duration": "12 Months",
@@ -67,6 +80,19 @@
         },
         "data_science_ai": {
             "name": "Data Science with Generative AI",
+            "instructors": [
+                {
+                    "name": "Arpit Jain",
+                    "linkedin": "https://www.linkedin.com/in/jainarpit21/"
+                },
+                {
+                    "name": "Vishwa Mohan"
+                }
+            ],
+            "ta_expert": {
+                "name": "Jyoti Nigam",
+                "linkedin": "https://www.linkedin.com/in/jyotinigam-phoenix/"
+            },
             "variants": {
                 "skillup_land_a_job": {
                     "duration": "12 Months",
@@ -116,6 +142,10 @@
         },
         "java_full_stack": {
             "name": "Java Full Stack Development",
+            "instructor": {
+                "name": "A Syed Saqib",
+                "linkedin": "https://www.linkedin.com/in/a-syed-saqib-78491414a/"
+            },
             "duration": "6 Months",
             "features": [
                 "Master Java, Spring Boot, Front-end Development",
@@ -133,20 +163,6 @@
                 "100% Live Classes",
                 "100+ Hours of Learning"
             ]
-        }
-    },
-
-    "masterclasses": {
-        "full_stack_ds": {
-            "title": "Complete Roadmap to Full Stack Development & Data Science",
-            "date": "March 6, 2025",
-            "time": "7:00 PM - 9:00 PM",
-            "price": "INR 0 (Limited Time Offer, was INR 999)"
-        },
-        "python": {
-            "title": "Zero to Python Hero",
-            "date": "March 9, 2025",
-            "time": "11:00 AM - 1:00 PM"
         }
     },
 

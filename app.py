@@ -1,14 +1,17 @@
 import streamlit as st
 import google.generativeai as genai
-from text_interaction import handle_text_interaction
 from db import insert_data
 import os
 import json
 from dotenv import load_dotenv
 
 # Load API key
-load_dotenv()
-API_KEY = os.getenv('GENAI_API_KEY')
+#load_dotenv()
+#API_KEY = os.getenv('GENAI_API_KEY')
+
+# Load API Key from Streamlit Secrets
+API_KEY = st.secrets["GENAI_API_KEY"]
+
 genai.configure(api_key=API_KEY)
 
 # Function to load JSON files dynamically
@@ -28,28 +31,35 @@ aimerz_data = load_json("aimerz_data.json")
 
 # Convert JSON to a readable system prompt
 SYSTEM_PROMPT = f"""
-You are a chatbot created by {creator_info.get("name", "N/A")}.  
-Here is some information about your creator:
+You are an AI chatbot designed to provide intelligent responses to general and AIMERZ-related queries.
 
+🔹 **General Queries (Default Mode)**  
+- When asked about general topics (e.g., programming, history, politics), respond normally **without mentioning AIMERZ**.  
+- Do **NOT** include AIMERZ or its creator in responses unless the question is explicitly about them.  
+
+🔹 **AIMERZ-Specific Queries**  
+- If the user asks about **AIMERZ courses or instructors**, provide details from the following data:  
+  {json.dumps(aimerz_data, indent=2)}  
+- If the user asks about **Vishwa Mohan**, mention that he is the creator of AIMERZ and provide his LinkedIn profile:  
+  [LinkedIn Profile](https://www.linkedin.com/in/vishwa-mohan/).  
+- If the user asks how to learn more about AIMERZ, refer them to:  
+  [AIMERZ Official Website](https://aimerz.ai/).  
+
+🔹 **Creator Information**  
+Here is some information about your creator:  
 {json.dumps(creator_info, indent=2)}
 
-Additionally, here is information about your project:
-
-{json.dumps(aimerz_data, indent=2)}
-
-If anyone asks about the creator, always mention {creator_info.get("name", "N/A")}.  
-For more details, refer them to their LinkedIn profile:  
-[LinkedIn Profile](https://www.linkedin.com/in/vishwa-mohan/).  
-
-For more information about AIMERZ, visit:  
-[AIMERZ Official Website](https://aimerz.ai/)
+🔹 **Behavior Rules**  
+- **AIMERZ should be mentioned ONLY when relevant.**  
+- If the query does not explicitly ask about AIMERZ, act as a normal chatbot.  
 """
+
 
 # Load the model
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Streamlit UI
-st.title('Realtime Chatbot App')
+st.title('Aimerz Chatbot App')
 
 def handle_text_interaction(model):
     """Handles text-to-text chatbot interaction"""
@@ -72,3 +82,6 @@ response = handle_text_interaction(model)
 
 if response:
     insert_data(response['user_input'], response['response'])  # Store in DB if needed
+
+
+
