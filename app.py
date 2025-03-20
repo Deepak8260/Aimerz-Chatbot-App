@@ -1,43 +1,59 @@
 import streamlit as st
 import google.generativeai as genai
-from db import insert_data
+from db import insert_data, get_chat_history
 import os
 import json
 from dotenv import load_dotenv
 
 # Load API key
-#load_dotenv()
-#API_KEY = os.getenv('GENAI_API_KEY')
+load_dotenv()
+API_KEY = os.getenv('GENAI_API_KEY')
 
-# Load API Key from Streamlit Secrets
-API_KEY = st.secrets["GENAI_API_KEY"]
-
+# Configure Generative AI
 genai.configure(api_key=API_KEY)
+model = genai.GenerativeModel("gemini-1.5-flash")
 
-# Function to load JSON files dynamically
+# --------------------------------------------
+# 🔹 Function to Load JSON Files
+# --------------------------------------------
+
 def load_json(file_name):
-    """Load JSON data from the 'data/' folder."""
+    """Load JSON data from the 'data' folder."""
     file_path = os.path.join("data", file_name)
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             return json.load(file)
     except FileNotFoundError:
-        st.error(f"Error: {file_name} not found in 'data/' folder. Please check the file path.")
+        st.error(f"Error: {file_name} not found in 'data/' folder.")
         return {}
 
 # Load structured data from JSON files
 creator_info = load_json("creator_info.json")
 aimerz_data = load_json("aimerz_data.json")
 
-# Convert JSON to a readable system prompt
+# Extract creator details
+creator_name = creator_info.get("name", "Unknown")
+creator_bio = creator_info.get("bio", "No bio available.")
+aimerz_description = aimerz_data.get("description", "AIMERZ is an AI-powered platform for learning.")
+
+# --------------------------------------------
+# 🔹 System Prompt (Professional & Structured)
+# --------------------------------------------
+
 SYSTEM_PROMPT = f"""
-You are an AI chatbot designed to provide intelligent responses to general and AIMERZ-related queries.
+You are **AIMERZ Bot 🤖**, an AI chatbot designed to provide intelligent and professional responses to both general and AIMERZ-related queries.
+
+🔹 **How to Introduce Yourself**  
+- If the user asks **"Who are you?"**, **"Who r u?"**, **"What is your name?"**, or similar questions, respond with:  
+  **"I am AIMERZ Bot 🤖, your AI assistant here to help with AIMERZ-related and general queries."**  
 
 🔹 **General Queries (Default Mode)**  
-- When asked about general topics (e.g., programming, history, politics), respond normally **without mentioning AIMERZ**.  
-- Do **NOT** include AIMERZ or its creator in responses unless the question is explicitly about them.  
+- For general topics (e.g., programming, history, politics), respond normally **without mentioning AIMERZ**, unless explicitly asked.  
+- **Do NOT include AIMERZ or its creator** in responses unless the query is specifically related to them.  
 
 🔹 **AIMERZ-Specific Queries**  
+- If the user asks **"What is AIMERZ?"**, respond with:  
+  **"AIMERZ is India's first job-focused learning platform, founded by Vishwa Mohan, Former CIO of PhysicsWallah. It provides career-aligned courses in Full Stack Development, Data Science, and DSA, along with hands-on projects and industry internships. You can learn more at [AIMERZ Official Website](https://aimerz.ai/)."**  
 - If the user asks about **AIMERZ courses or instructors**, provide details from the following data:  
   {json.dumps(aimerz_data, indent=2)}  
 - If the user asks about **Vishwa Mohan**, mention that he is the creator of AIMERZ and provide his LinkedIn profile:  
@@ -50,38 +66,75 @@ Here is some information about your creator:
 {json.dumps(creator_info, indent=2)}
 
 🔹 **Behavior Rules**  
-- **AIMERZ should be mentioned ONLY when relevant.**  
+- **Always introduce yourself as AIMERZ Bot 🤖 ONLY when asked about your identity.**  
+- **Do NOT include self-introduction when answering 'What is AIMERZ?'.**  
+- **Mention AIMERZ ONLY when relevant.**  
 - If the query does not explicitly ask about AIMERZ, act as a normal chatbot.  
 """
 
 
-# Load the model
-model = genai.GenerativeModel("gemini-1.5-flash")
+# --------------------------------------------
+# 🔹 Streamlit UI Configuration
+# --------------------------------------------
 
-# Streamlit UI
-st.title('Aimerz Chatbot App')
+st.set_page_config(page_title="AIMERZ Chatbot", layout="wide")
+st.title("💬 AIMERZ Chatbot")
 
-def handle_text_interaction(model):
-    """Handles text-to-text chatbot interaction"""
-    user_input = st.text_input('Enter your query:')
-    button = st.button('Get Response')
+# Initialize session state for messages
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-    if button and user_input:
+# Sidebar for Chat History
+st.sidebar.title("📜 Chat History")
+chat_history = get_chat_history()
+
+# Display Chat History in Sidebar
+if chat_history:
+    for i, chat in enumerate(chat_history):
+        if "user_input" in chat:
+            button_label = chat["user_input"][:40]  # Longer preview text
+            if st.sidebar.button(button_label, key=f"chat_{i}"):
+                st.session_state.messages.append({"role": "user", "content": chat["user_input"]})
+                st.session_state.messages.append({"role": "assistant", "content": chat["response"]})
+else:
+    st.sidebar.write("No chat history yet!")
+
+# --------------------------------------------
+# 🔹 Display Chat Messages
+# --------------------------------------------
+
+for msg in st.session_state.messages:
+    role = "user" if msg["role"] == "user" else "assistant"
+    with st.chat_message(role):
+        st.markdown(msg["content"])
+
+# --------------------------------------------
+# 🔹 Chat Input & AI Response Handling
+# --------------------------------------------
+
+user_input = st.chat_input("Type your message...")
+
+if user_input:
+    st.session_state.messages.append({"role": "user", "content": user_input})
+    with st.chat_message("user"):
+        st.markdown(user_input)
+
+    # Determine response
+    response = ""
+    if user_input.lower() in ["what is aimerz?", "tell me about aimerz", "explain aimerz"]:
+        response = aimerz_description
+    elif user_input.lower() in ["who is the creator?", "who founded aimerz?", "who is the founder?"]:
+        response = f"The founder of AIMERZ is **{creator_name}**. {creator_bio}"
+    else:
         full_prompt = SYSTEM_PROMPT + "\nUser Query: " + user_input
-        response = model.generate_content(full_prompt)
-        chatbot_response = response.text.strip()  # Clean output
+        ai_response = model.generate_content(full_prompt)
+        response = getattr(ai_response, "text", "Sorry, I couldn't generate a response.").strip()
 
-        st.write(chatbot_response)
+    # Display bot response
+    st.session_state.messages.append({"role": "assistant", "content": response})
+    with st.chat_message("assistant"):
+        st.markdown(response)
 
-        return {"user_input": user_input, "response": chatbot_response}
-
-    return None
-
-# Call text interaction function
-response = handle_text_interaction(model)
-
-if response:
-    insert_data(response['user_input'], response['response'])  # Store in DB if needed
-
-
+    # Store in database
+    insert_data(user_input, response)
 
