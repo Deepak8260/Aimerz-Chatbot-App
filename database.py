@@ -29,6 +29,17 @@ def insert_data(user_input, response):
     }
     collection.insert_one(chat)
 
+from collections import defaultdict
+
 def get_chat_history(limit=10):
-    """Retrieve the latest chat history from MongoDB."""
-    return list(collection.find().sort("timestamp", -1).limit(limit))
+    """Retrieve and group the latest chat history from MongoDB by date."""
+    history = list(collection.find().sort("timestamp", -1).limit(limit))
+
+    grouped_history = defaultdict(list)
+    
+    for chat in history:
+        # Convert timestamp to a readable date (YYYY-MM-DD format)
+        date_key = chat["timestamp"].strftime("%Y-%m-%d")
+        grouped_history[date_key].append(chat)
+
+    return dict(grouped_history)  # Convert defaultdict to a normal dict
