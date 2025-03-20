@@ -86,16 +86,19 @@ if "messages" not in st.session_state:
 
 # Sidebar for Chat History
 st.sidebar.title("📜 Chat History")
-chat_history = get_chat_history()
+
+chat_history = get_chat_history()  # Now returns grouped data
 
 if chat_history:
-    for i, chat in enumerate(chat_history):
-        if "user_input" in chat:
-            if st.sidebar.button(chat["user_input"][:40], key=f"chat_{i}"):
-                st.session_state.messages.extend([
-                    {"role": "user", "content": chat["user_input"]},
-                    {"role": "assistant", "content": chat["response"]}
-                ])
+    for date, chats in chat_history.items():
+        with st.sidebar.expander(f"📅 {date}"):  # Grouped by date
+            for i, chat in enumerate(chats):
+                if "user_input" in chat:
+                    if st.sidebar.button(f"🔹 {chat['user_input'][:40]}", key=f"chat_{date}_{i}"):
+                        st.session_state.messages.extend([
+                            {"role": "user", "content": chat["user_input"]},
+                            {"role": "assistant", "content": chat["response"]}
+                        ])
 else:
     st.sidebar.write("No chat history yet!")
 
