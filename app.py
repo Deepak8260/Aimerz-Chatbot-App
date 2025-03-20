@@ -34,11 +34,6 @@ def load_json(file_name):
 creator_info = load_json("creator_info.json")
 aimerz_data = load_json("aimerz_data.json")
 
-# Extract creator details
-creator_name = creator_info.get("name", "Unknown")
-creator_bio = creator_info.get("bio", "No bio available.")
-aimerz_description = aimerz_data.get("description", "AIMERZ is an AI-powered platform for learning.")
-
 # --------------------------------------------
 # 🔹 System Prompt (Professional & Structured)
 # --------------------------------------------
@@ -113,14 +108,10 @@ if user_input:
 
     # Determine response
     response = ""
-    if user_input.lower() in ["what is aimerz?", "tell me about aimerz", "explain aimerz"]:
-        response = aimerz_description
-    elif user_input.lower() in ["who is the creator?", "who founded aimerz?", "who is the founder?"]:
-        response = f"The founder of AIMERZ is **{creator_name}**. {creator_bio}"
-    else:
-        full_prompt = SYSTEM_PROMPT + "\nUser Query: " + user_input
-        ai_response = model.generate_content(full_prompt)
-        response = getattr(ai_response, "text", "Sorry, I couldn't generate a response.").strip()
+    # Generate AI response
+    full_prompt = SYSTEM_PROMPT + "\nUser Query: " + user_input
+    ai_response = model.generate_content(full_prompt)
+    response = getattr(ai_response, "text", "Sorry, I couldn't generate a response.").strip()
 
     # Display bot response
     st.session_state.messages.append({"role": "assistant", "content": response})
