@@ -6,8 +6,11 @@ import json
 from dotenv import load_dotenv
 
 # Load API key
-load_dotenv()
-API_KEY = os.getenv('GENAI_API_KEY')
+#load_dotenv()
+#API_KEY = os.getenv('GENAI_API_KEY')
+
+# Load API Key from Streamlit Secrets
+API_KEY = st.secrets["GENAI_API_KEY"]
 
 # Configure Generative AI
 genai.configure(api_key=API_KEY)
@@ -73,10 +76,7 @@ Here is some information about your creator:
 """
 
 
-# --------------------------------------------
-# 🔹 Streamlit UI Configuration
-# --------------------------------------------
-
+# Streamlit UI Configuration
 st.set_page_config(page_title="AIMERZ Chatbot", layout="wide")
 st.title("💬 AIMERZ Chatbot")
 
@@ -88,32 +88,24 @@ if "messages" not in st.session_state:
 st.sidebar.title("📜 Chat History")
 chat_history = get_chat_history()
 
-# Display Chat History in Sidebar
 if chat_history:
     for i, chat in enumerate(chat_history):
         if "user_input" in chat:
-            button_label = chat["user_input"][:40]  # Longer preview text
-            if st.sidebar.button(button_label, key=f"chat_{i}"):
-                st.session_state.messages.append({"role": "user", "content": chat["user_input"]})
-                st.session_state.messages.append({"role": "assistant", "content": chat["response"]})
+            if st.sidebar.button(chat["user_input"][:40], key=f"chat_{i}"):
+                st.session_state.messages.extend([
+                    {"role": "user", "content": chat["user_input"]},
+                    {"role": "assistant", "content": chat["response"]}
+                ])
 else:
     st.sidebar.write("No chat history yet!")
 
-# --------------------------------------------
-# 🔹 Display Chat Messages
-# --------------------------------------------
-
+# Display Chat Messages
 for msg in st.session_state.messages:
-    role = "user" if msg["role"] == "user" else "assistant"
-    with st.chat_message(role):
+    with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# --------------------------------------------
-# 🔹 Chat Input & AI Response Handling
-# --------------------------------------------
-
+# Chat Input & AI Response Handling
 user_input = st.chat_input("Type your message...")
-
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
