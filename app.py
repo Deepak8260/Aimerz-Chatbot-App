@@ -1,6 +1,6 @@
 import streamlit as st
 import google.generativeai as genai
-from db import insert_data, get_chat_history
+from database import insert_data, get_chat_history
 import os
 import json
 from dotenv import load_dotenv

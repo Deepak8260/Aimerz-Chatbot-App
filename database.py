@@ -11,7 +11,7 @@ import streamlit as st
 #DB_NAME = os.getenv('DB_NAME')
 #COLLECTION_NAME = os.getenv('COLLECTION_NAME')
 
-# Get MongoDB credentials from Streamlit Secrets
+#Get MongoDB credentials from Streamlit Secrets
 MONGO_URI = st.secrets["MONGO_URI"]
 DB_NAME = st.secrets["DB_NAME"]
 COLLECTION_NAME = st.secrets["COLLECTION_NAME"]
