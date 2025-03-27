@@ -1,0 +1,59 @@
+{
+    "Interns": {
+        "Data Science Interns": {
+            "Deepak Kumar Mohanty": {
+                "name": "Deepak Kumar Mohanty",
+                "description": "Data Science Intern at Aimerz.ai | BCA Graduate with a Passion for Crafting AI-Driven Innovations",
+                "designation": "Data Science Intern",
+                "linkedin": "https://www.linkedin.com/in/deepak-kumar-mohanty-09aa59230/"
+            },
+            "Gowri Sri Vani": {
+                "name": "Gowri Sri Vani",
+                "description": "Data Science Intern | Pursuing B.E in Artificial Intelligence and Data Science",
+                "designation": "Data Science Intern",
+                "linkedin": "https://www.linkedin.com/in/gowri-sri-vani/"
+            }
+        },
+        "Web Development Interns": {
+            "Chandrakanta Satapathy": {
+                "name": "Chandrakanta Satapathy",
+                "description": "Web Development Intern at AIMERZ",
+                "designation": "Web Development Intern",
+                "linkedin": "https://www.linkedin.com/in/chandrakanta-satapathy-610a85248/"
+            },
+            "Pinkee Mishra": {
+                "name": "Pinkee Mishra",
+                "description": "Full Stack Development Intern at AIMERZ",
+                "designation": "Full Stack Development Intern",
+                "linkedin": "https://www.linkedin.com/in/pinkee-mishra-9b2710223/"
+            }
+        }
+    },
+    "Employees": {
+        "Melvin Mathew": {
+            "name": "Melvin Mathew",
+            "description": "As a dedicated self-taught Data Scientist, I bring extensive expertise in Data Science, Machine Learning, and advanced analytical techniques to drive data-driven solutions.",
+            "designation": [
+                "Data Scientist",
+                "Data Science Content Strategist Associate",
+                "Data Science Trainee"
+            ],
+            "linkedin": "https://www.linkedin.com/in/melvinmathew9991/"
+        },
+        "Lokesh Mathur": {
+            "name": "Lokesh Mathur",
+            "description": "Head - Learning & Outcome at AIMERZ | Ex-AVP, upGrad | IIM Calcutta | PMP®, CSM®, SCJP 5.0",
+            "designation": "Head - Learning & Outcome",
+            "linkedin": "https://www.linkedin.com/in/lokeshmathur/"
+        },
+        "Prabir Kumar Satapathy": {
+            "name": "Prabir Kumar Satapathy",
+            "description": "SDE-1 | Associate Manager at AIMERZ | Chandigarh University | Passionate about software development and management.",
+            "designation": [
+                "SDE-1",
+                "Associate Manager"
+            ],
+            "linkedin": "https://www.linkedin.com/in/prabir97/"
+        }
+    }
+}
