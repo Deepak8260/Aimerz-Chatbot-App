@@ -7,11 +7,11 @@ import json
 from dotenv import load_dotenv
 
 # Load API key
-load_dotenv()
-API_KEY = os.getenv('GENAI_API_KEY')
+#load_dotenv()
+#API_KEY = os.getenv('GENAI_API_KEY')
 
 # Load API Key from Streamlit Secrets
-#API_KEY = st.secrets["GENAI_API_KEY"]
+API_KEY = st.secrets["GENAI_API_KEY"]
 
 # Configure Generative AI
 genai.configure(api_key=API_KEY)
