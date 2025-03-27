@@ -1,16 +1,17 @@
 import streamlit as st
 import google.generativeai as genai
-from database import insert_data, get_chat_history
+from database import insert_data
+#from database import get_chat_history
 import os
 import json
 from dotenv import load_dotenv
 
 # Load API key
-#load_dotenv()
-#API_KEY = os.getenv('GENAI_API_KEY')
+load_dotenv()
+API_KEY = os.getenv('GENAI_API_KEY')
 
 # Load API Key from Streamlit Secrets
-API_KEY = st.secrets["GENAI_API_KEY"]
+#API_KEY = st.secrets["GENAI_API_KEY"]
 
 # Configure Generative AI
 genai.configure(api_key=API_KEY)
@@ -33,6 +34,7 @@ def load_json(file_name):
 # Load structured data from JSON files
 creator_info = load_json("creator_info.json")
 aimerz_data = load_json("aimerz_data.json")
+aimerz_employees = load_json("aimerz_employees.json")
 
 # --------------------------------------------
 # 🔹 System Prompt (Professional & Structured)
@@ -54,6 +56,8 @@ You are **AIMERZ Bot 🤖**, an AI chatbot designed to provide intelligent and p
   **"AIMERZ is India's first job-focused learning platform, founded by Vishwa Mohan, Former CIO of PhysicsWallah. It provides career-aligned courses in Full Stack Development, Data Science, and DSA, along with hands-on projects and industry internships. You can learn more at [AIMERZ Official Website](https://aimerz.ai/)."**  
 - If the user asks about **AIMERZ courses or instructors**, provide details from the following data:  
   {json.dumps(aimerz_data, indent=2)}  
+- If the user asks about **AIMERZ employees**, provide details from the following data:  
+  {json.dumps(aimerz_employees, indent=2)}  
 - If the user asks about **Vishwa Mohan**, mention that he is the creator of AIMERZ and provide his LinkedIn profile:  
   [LinkedIn Profile](https://www.linkedin.com/in/vishwa-mohan/).  
 - If the user asks how to learn more about AIMERZ, refer them to:  
@@ -71,6 +75,7 @@ Here is some information about your creator:
 """
 
 
+
 # Streamlit UI Configuration
 st.set_page_config(page_title="AIMERZ Chatbot", layout="wide")
 st.title("💬 AIMERZ Chatbot")
@@ -80,19 +85,19 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # Sidebar for Chat History
-st.sidebar.title("📜 Chat History")
-chat_history = get_chat_history()
+#st.sidebar.title("📜 Chat History")
+#chat_history = get_chat_history()
 
-if chat_history:
-    for i, chat in enumerate(chat_history):
-        if "user_input" in chat:
-            if st.sidebar.button(chat["user_input"][:40], key=f"chat_{i}"):
-                st.session_state.messages.extend([
-                    {"role": "user", "content": chat["user_input"]},
-                    {"role": "assistant", "content": chat["response"]}
-                ])
-else:
-    st.sidebar.write("No chat history yet!")
+#if chat_history:
+#    for i, chat in enumerate(chat_history):
+#        if "user_input" in chat:
+#            if st.sidebar.button(chat["user_input"][:40], key=f"chat_{i}"):
+#                st.session_state.messages.extend([
+#                    {"role": "user", "content": chat["user_input"]},
+#                    {"role": "assistant", "content": chat["response"]}
+#                ])
+#else:
+#    st.sidebar.write("No chat history yet!")
 
 # Display Chat Messages
 for msg in st.session_state.messages:
@@ -106,18 +111,22 @@ if user_input:
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    # Determine response
-    response = ""
-    # Generate AI response
-    full_prompt = SYSTEM_PROMPT + "\nUser Query: " + user_input
-    ai_response = model.generate_content(full_prompt)
-    response = getattr(ai_response, "text", "Sorry, I couldn't generate a response.").strip()
+    # Construct chat history for context (last 5 messages)
+    chat_history = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in st.session_state.messages[-5:]])
 
-    # Display bot response
+    # Generate AI response with context
+    full_prompt = f"{SYSTEM_PROMPT}\n\nChat History:\n{chat_history}\n\nUser: {user_input}"
+    ai_response = model.generate_content(full_prompt)
+
+    # Extract response safely
+    response = ai_response.candidates[0].content.parts[0].text if ai_response.candidates else "Sorry, I couldn't generate a response."
+
+    # Store and display response
     st.session_state.messages.append({"role": "assistant", "content": response})
     with st.chat_message("assistant"):
         st.markdown(response)
 
     # Store in database
     insert_data(user_input, response)
+
 
